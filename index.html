@@ -1,1 +1,176 @@
-<h1>hhh</h1>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>吊弦计算工具系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            display: flex;
+            min-height: 100vh;
+        }
+        /* 左侧导航栏 */
+        .sidebar {
+            width: 240px;
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 30px 20px;
+        }
+        .sidebar h2 {
+            margin-bottom: 30px;
+            font-size: 20px;
+            text-align: center;
+        }
+        .nav-item {
+            margin-bottom: 12px;
+        }
+        .nav-item a {
+            display: block;
+            padding: 12px 16px;
+            color: #ecf0f1;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        .nav-item a:hover {
+            background-color: #34495e;
+        }
+        /* 右侧内容区域 */
+        .main {
+            flex: 1;
+            padding: 40px;
+            background-color: #f5f7fa;
+        }
+        .content-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .section h3 {
+            font-size:24px;
+            margin-bottom:20px;
+            color:#2c3e50;
+        }
+        .section p {
+            line-height: 1.8;
+            font-size:16px;
+            color:#444;
+            margin-bottom:16px;
+        }
+        .download-link {
+            display: inline-block;
+            margin-top:10px;
+            padding:10px 20px;
+            background:#2980b9;
+            color:#fff;
+            text-decoration:none;
+            border-radius:6px;
+        }
+        .download-link:hover {
+            background:#1f618d;
+        }
+        .buy-link {
+            display: inline-block;
+            margin-top:10px;
+            padding:10px 20px;
+            background:#ff4400;
+            color:#fff;
+            text-decoration:none;
+            border-radius:6px;
+        }
+        .buy-link:hover {
+            background:#dd3a00;
+        }
+        .hardware-desc {
+            margin-top:20px;
+            padding:16px;
+            background-color:#f8f9fa;
+            border-left:4px solid #ff4400;
+            border-radius:4px;
+        }
+        .hardware-img {
+            margin:15px 0;
+            max-width:320px;
+            border:1px solid #ddd;
+            border-radius:6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 左侧导航 -->
+    <div class="sidebar">
+        <h2>导航</h2>
+        <div class="nav-item">
+            <a href="#about" onclick="showSection('about')">关于我们</a>
+        </div>
+        <div class="nav-item">
+            <a href="#diaoxian" onclick="showSection('diaoxian')">整体吊弦计算</a>
+        </div>
+        <div class="nav-item">
+            <a href="#material" onclick="showSection('material')">材料计划计算</a>
+        </div>
+    </div>
+    <!-- 右侧主内容 -->
+    <div class="main">
+        <div class="content-box">
+            <!-- 关于我们 -->
+            <div id="about" class="section active">
+                <h3>关于我们</h3>
+                <p>本工作室致力于帮助工程建筑领域企业解决管理痛点，开发了一系列软件工具，简化人工手工计算，减少计算错误，提高现场技术人员工作效率。</p>
+                <p>如果您工作中有什么未能解决的问题，欢迎随时联系我们，邮箱：<a href="mailto:huanghu578@163.com">huanghu578@163.com</a>。</p>
+            </div>
+            <!-- 整体吊弦计算 -->
+            <div id="diaoxian" class="section">
+                <h3>整体吊弦计算</h3>
+                <p>整体吊弦计算模块，1、从toml文件中读取配置和布置数据；2、从xlsx中导入输入数据；3、计算出结果，可以导出xlsx文件。</p>
+                <p>计算结果可直接用于接触网吊弦预制。</p>
+                <a class="download-link" href="./整体吊弦计算.zip">下载：整体吊弦计算工具</a>
+                <div class="hardware-desc">
+                    <p>本商品为自研软件配套硬件授权锁；软件为本人独立开发，可点击上面的链接下载；购买本硬件，仅获得本人自研软件的合法使用授权，不转让著作权；本锁仅用于激活本店自研软件，不支持任何第三方软件。</p>
+                    <!-- 加密狗图片，将dog.png替换为你的图片文件名，和html放同一目录 -->
+                    <img class="hardware-img" src="./dog.png" alt="USB加密狗">
+                    <br>
+                    <a class="buy-link" target="_blank" href="https://item.taobao.com/item.htm?id=1088127722462&spm=a213gs.v2success.0.0.36714831aOTZ4l">前往淘宝购买</a>
+                </div>
+            </div>
+            <!-- 材料计划计算 -->
+            <div id="material" class="section">
+                <h3>材料计划计算</h3>
+                <p>材料计划计算模块，1、从xlsx文件里导入安装图册文件；2、从CAD文件里读取工程量，生成合并工程量；3、根据工程量和安装图数据自动工程中使用到的材料用量，生成bom清单。</p>
+                
+                <a class="download-link" href="./材料计划计算.zip">下载：材料计划计算模板</a>
+                <div class="hardware-desc">
+                    <p>本商品为自研软件配套硬件授权锁；软件为本人独立开发，可点击上面的链接下载；购买本硬件，仅获得本人自研软件的合法使用授权，不转让著作权；本锁仅用于激活本店自研软件，不支持任何第三方软件。</p>
+                    <!-- 加密狗图片，将dog.png替换为你的图片文件名，和html放同一目录 -->
+                    <img class="hardware-img" src="./dog.png" alt="USB加密狗">
+                    <br>
+                    <a class="buy-link" target="_blank" href="这里替换成材料计划淘宝商品链接">前往淘宝购买</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    function showSection(id) {
+        // 隐藏所有板块
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(sec => {
+            sec.classList.remove('active');
+        });
+        // 显示选中板块
+        document.getElementById(id).classList.add('active');
+    }
+</script>
+</body>
+</html>
