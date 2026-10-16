@@ -106,6 +106,75 @@
             border:1px solid #ddd;
             border-radius:6px;
         }
+
+        /* 新增：满宽图片（用于 dropper-skill.png 布满右侧） */
+        .full-img {
+            width: 100%;          /* 宽度占满父容器 */
+            max-width: 100%;      /* 覆盖原有限制 */
+            height: auto;         /* 高度按比例自动缩放 */
+            display: block;       /* 避免行内元素底部空隙 */
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        /* 新增：关于我们区域优化 + 图标嵌入 */
+        .about-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+        .about-header h3 {
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+        }
+        .about-icon {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+        .about-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .about-icon img:hover {
+            transform: scale(1.1);
+        }
+        /* 移动端适配，也可以直接下边 */
+        .about-footer-icon {
+            margin-top: 24px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .about-footer-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+        .about-footer-icon img:hover {
+            transform: scale(1.05);
+        }
+        .icon-hint {
+            font-size: 13px;
+            color: #999;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -121,43 +190,99 @@
         <div class="nav-item">
             <a href="#material" onclick="showSection('material')">材料计划计算</a>
         </div>
+        <div class="nav-item">
+            <a href="#rhk" onclick="showSection('rhk')">软横跨计算</a>
+        </div>
+        <div class="nav-item">
+            <a href="#wb" onclick="showSection('wb')">腕臂计算</a>
+        </div>
+        <div class="nav-item">
+            <a href="#wbm" onclick="showSection('wbm')">工程量计算</a>
+        </div>
+        <div class="nav-item">
+            <a href="#fire" onclick="showSection('fire')">弓网燃弧率分析</a>
+        </div>
     </div>
     <!-- 右侧主内容 -->
     <div class="main">
         <div class="content-box">
             <!-- 关于我们 -->
             <div id="about" class="section active">
-                <h3>关于我们</h3>
-                <p>本工作室致力于帮助工程建筑领域企业解决管理痛点，开发了一系列软件工具，简化人工手工计算，减少计算错误，提高现场技术人员工作效率。</p>
-                <p>如果您工作中有什么未能解决的问题，欢迎随时联系我们，邮箱：<a href="mailto:huanghu578@163.com">huanghu578@163.com</a>。</p>
+                <div class="about-header">
+                    <!-- 图标放左边 -->
+                    <span class="about-icon" title="cf.png 图标">
+                        <img src="./cf.png" alt="cf 图标">
+                    </span>
+                    <!-- 标题居中 -->
+                    <h3>关于我们</h3>
+                    <!-- 右侧留一个占位，让标题真正居中 -->
+                    <span class="about-icon-placeholder"></span>
+                </div>
+                <p>变脸科技（ChangeFace Tech）关注工程建筑领域项目管理痛点难点，与行业内企业密切合作，尝试将现代AI及智能技术引入项目管理领域，开发了一系列软件工具，简化人工手工计算，减少计算错误，提高现场技术人员工作效率。</p>
+                <p>如果您工作中有什么未能解决的问题，或者需要定制/合作开发，欢迎随时联系我们，邮箱：<a href="mailto:358941969@qq.com">358941969@qq.com</a>。</p>
             </div>
+
             <!-- 整体吊弦计算 -->
             <div id="diaoxian" class="section">
-                <h3>整体吊弦计算</h3>
-                <p>整体吊弦计算模块，1、从toml文件中读取配置和布置数据；2、从xlsx中导入输入数据；3、计算出结果，可以导出xlsx文件。</p>
-                <p>计算结果可直接用于接触网吊弦预制。</p>
-                <a class="download-link" href="./整体吊弦计算.zip">下载：整体吊弦计算工具</a>
+                <h3>整体吊弦计算/dropper</h3>
+                <p>整体吊弦计算软件，1、从toml文件中读取配置和布置数据；2、从xlsx中导入输入数据；3、计算出结果；4、导出xlsx文件。</p>
+                <p>本软件内置现代的“Skill”功能，用户可以使用自然语言发布命令，智能小dropper助手能够理解用户命令，自动完成上述4个步骤，一站式完成计算任务。</p>
+                <div class="hardware-desc">
+                    <!-- 使用 .full-img 让图片布满右侧区域 -->
+                    <img class="full-img" src="./dropper-skill.png" alt="dropper skill 功能截图">
+                    <br>
+                </div>
+                
+                <a class="download-link" href="./整体吊弦计算.zip">下载：整体吊弦计算</a>
                 <div class="hardware-desc">
                     <p>本商品为自研软件配套硬件授权锁；软件为本人独立开发，可点击上面的链接下载；购买本硬件，仅获得本人自研软件的合法使用授权，不转让著作权；本锁仅用于激活本店自研软件，不支持任何第三方软件。</p>
-                    <!-- 加密狗图片，将dog.png替换为你的图片文件名，和html放同一目录 -->
-                    <img class="hardware-img" src="./dog.png" alt="USB加密狗">
+                    <!-- 加密狗图片，将usb.jpg替换为你的图片文件名，和html放同一目录 -->
+                    <img class="hardware-img" src="./usb.jpg" alt="USB加密狗">
                     <br>
                     <a class="buy-link" target="_blank" href="https://item.taobao.com/item.htm?id=1088127722462&spm=a213gs.v2success.0.0.36714831aOTZ4l">前往淘宝购买</a>
                 </div>
             </div>
             <!-- 材料计划计算 -->
             <div id="material" class="section">
-                <h3>材料计划计算</h3>
-                <p>材料计划计算模块，1、从xlsx文件里导入安装图册文件；2、从CAD文件里读取工程量，生成合并工程量；3、根据工程量和安装图数据自动工程中使用到的材料用量，生成bom清单。</p>
-                
-                <a class="download-link" href="./材料计划计算.zip">下载：材料计划计算模板</a>
+                <h3>材料计划计算/c2b</h3>
+                <p>材料计划计算软件，能够实现从Cad2Bom的自动计算。1、从xlsx文件里导入安装图册文件（可选，也可以利用软件内置的安装图册）；2、从CAD文件（dwg/dxf）里读取工程量，生成合并工程量表；3、根据工程量和安装图数据自动工程中使用到的材料用量，生成bom清单。</p>
                 <div class="hardware-desc">
-                    <p>本商品为自研软件配套硬件授权锁；软件为本人独立开发，可点击上面的链接下载；购买本硬件，仅获得本人自研软件的合法使用授权，不转让著作权；本锁仅用于激活本店自研软件，不支持任何第三方软件。</p>
-                    <!-- 加密狗图片，将dog.png替换为你的图片文件名，和html放同一目录 -->
-                    <img class="hardware-img" src="./dog.png" alt="USB加密狗">
+                    <!-- 使用 .full-img 让图片布满右侧区域 -->
+                    <img class="full-img" src="./c2b-drawing.png"">
+                    <p>本软件正在开发中，敬请期待......</p>
+                    <br>
+                </div>                
+                <!-- <a class="download-link" href="./材料计划计算.zip">下载：材料计划计算模板</a>
+                <div class="hardware-desc">
+                    <p>本商品为自研软件配套硬件授权锁；软件为本人独立开发，可点击上面的链接下载；购买本硬件，仅获得本人自研软件的合法使用授权，不转让著作权；本锁仅用于激活本店自研软件，不支持任何第三方软件。</p>                    
+                    <img class="hardware-img" src="./usb.jpg" alt="USB加密狗">
                     <br>
                     <a class="buy-link" target="_blank" href="这里替换成材料计划淘宝商品链接">前往淘宝购买</a>
-                </div>
+                </div> -->
+            </div>
+            <!-- 软横跨计算 -->
+            <div id="rhk" class="section">
+                <h3>软横跨计算/c2b</h3>
+                <p>接触网软横跨计算软件，1、读取配置；2、读取原始数据；3、计算，输出。</p>
+                <p>本软件正在开发中，敬请期待......</p>                
+            </div>
+            <!-- 腕臂计算 -->
+            <div id="wb" class="section">
+                <h3>腕臂计算/wb</h3>
+                <p>接触网腕臂计算软件，1、读取配置；2、读取原始数据；3、计算，输出。</p>
+                <p>本软件正在开发中，敬请期待......</p>                
+            </div>
+            <!-- 工程量计算 -->
+            <div id="wbm" class="section">
+                <h3>工程量计算/c2b</h3>
+                <p>工程量计算软件，适用于各种安装工程。1、将各单位工程的平面布置图Cad文件防在一个文件夹中，将此文件夹设置为“工作文件夹”；2、软件读取工作文件夹下的Cad文件，自动识别工程量表；3、计算和汇总工程量表，输出。</p>
+                <p>本软件正在开发中，敬请期待......</p>                
+            </div>
+            <!-- 弓网受流电弧分析 -->
+            <div id="fire" class="section">
+                <h3>弓网燃弧率分析</h3>
+                <p>输入弓网受流视频mp4文件，分析出受流质量和燃弧率。</p>
+                <p>本软件正在开发中，敬请期待......</p>                
             </div>
         </div>
     </div>
