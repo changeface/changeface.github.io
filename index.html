@@ -317,12 +317,12 @@
 <script data-goatcounter="https://changeface.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 <script>
-    // 等页面和 gc.zgo.at 脚本加载完毕后，把数字插入到 #visitor-count 里面
-    window.addEventListener('load', function() {
+    var t = setInterval(function() {
         if (window.goatcounter && window.goatcounter.visit_count) {
+            clearInterval(t);
             window.goatcounter.visit_count({ append: '#visitor-count' });
         }
-    });
+    }, 100);
 </script>
 </body>
 </html>
